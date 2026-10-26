@@ -1,0 +1,4 @@
+export type Media = {id:number; project_id:number; original_name:string; mime_type:string; size:number; duration:number; width:number; height:number; codec:string; trim_start:number; trim_end:number; updated_at:string};
+export type Project = {id:number; name:string; description:string|null; updated_at:string; media_count?:number; media:Media[]};
+export type RemixJob = {id:number; media_id:number; variant:'a'|'b'; status:'pending'|'running'|'completed'|'failed'; progress:number; target_duration:number; error:string|null; analysis:{output_duration:number; segments:{start:number; end:number; score:number}[]; has_source_audio:boolean; selection_profile?:string}|null};
+export function time(seconds:number):string { return `${Math.floor(seconds / 60)}:${(seconds % 60).toFixed(1).padStart(4,'0')}`; }
